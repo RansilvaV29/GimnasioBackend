@@ -1,0 +1,17 @@
+spring.application.name=backendGimnasio
+# Configuración de la base de datos PostgreSQL
+spring.datasource.url=jdbc:postgresql://localhost:5432/gimnasio
+
+spring.datasource.username=postgres
+spring.datasource.password=admin
+spring.datasource.driver-class-name=org.postgresql.Driver
+spring.jpa.hibernate.ddl-auto=none
+# Puedes cambiar a update si estás creando las tablas automáticamente
+
+# Mostrar las consultas SQL en consola (opcional)
+spring.jpa.show-sql=true
+
+# Tiempo de validez del token (opcional si lo usas en tu JwtService)
+
+#jwt.secret=clave-super-secreta-123
+#jwt.expiration=86400000  # 24 horas en milisegundos

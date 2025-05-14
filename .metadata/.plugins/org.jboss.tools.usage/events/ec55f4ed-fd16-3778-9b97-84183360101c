@@ -1,11 +1,11 @@
-#Tue May 13 19:19:08 COT 2025
+#Wed May 14 00:08:08 COT 2025
 a=finishWizard
 c=0
 cl=org.eclipse.jpt.jpa.ui.internal.wizards.gen.GenerateEntitiesFromSchemaWizard
 cmp=usage
 ct=jbt
-d=1747181948525
+d=1747199288898
 l=Wizard class name
-s=1
+s=0
 v=2.3.100
 vl=How many times the 'Finish' button pressed during the day

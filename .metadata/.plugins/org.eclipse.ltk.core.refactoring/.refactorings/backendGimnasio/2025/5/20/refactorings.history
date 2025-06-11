@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Move element &apos;LoginRequest.java&apos; to &apos;backendGimnasio/src/main/java/com.espe.gimnasio.dto&apos;&#x0D;&#x0A;- Original project: &apos;backendGimnasio&apos;&#x0D;&#x0A;- Destination element: &apos;backendGimnasio/src/main/java/com.espe.gimnasio.dto&apos;&#x0D;&#x0A;- Original element: &apos;com.espe.gimnasio.entity.LoginRequest.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.espe.gimnasio.dto" element1="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.espe.gimnasio.entity{LoginRequest.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1747194625108" units="1" version="1.0"/>
-</session>

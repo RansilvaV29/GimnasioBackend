@@ -1,5 +1,0 @@
-package com.espe.gimnasio.dto;
-
-public class AuthResponse {
-
-}

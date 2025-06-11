@@ -34,7 +34,7 @@ public class ApplicationConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource())) // Habilita CORS
             .csrf(csrf -> csrf.disable()) // Desactiva CSRF para APIs REST
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**").permitAll() // Permite login y registro
+                .requestMatchers("/api/**").permitAll() // Permite login y registro
                 .anyRequest().authenticated() // Requiere autenticación para todo lo demás
             )
             .sessionManagement(session -> session

@@ -1,0 +1,30 @@
+package com.espe.gimnasio.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.espe.gimnasio.dto.HistorialMembresiaDto;
+import com.espe.gimnasio.entity.Historialmambresia;
+import com.espe.gimnasio.service.HistorialMembresiaService;
+
+@RestController
+@RequestMapping("/api/historial-membresias")
+public class HistorialMembresiaController {
+	@Autowired
+    private HistorialMembresiaService historialService;
+
+    @PostMapping
+    public ResponseEntity<?> registrarHistorial(@RequestBody HistorialMembresiaDto dto) {
+    	try {
+            Historialmambresia historial = historialService.registrarHistorial(dto);
+            return ResponseEntity.ok(historial);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+}

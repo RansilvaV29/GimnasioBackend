@@ -1,9 +1,9 @@
 package com.espe.gimnasio.dto;
 
-public class AuthResponseDto {
+public class AuthRespuestaDto {
 	 private String token;
 
-    public AuthResponseDto(String token) {
+    public AuthRespuestaDto(String token) {
         this.token = token;
     }
 

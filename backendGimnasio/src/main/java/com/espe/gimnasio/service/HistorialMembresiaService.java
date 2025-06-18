@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import com.espe.gimnasio.dto.HistorialMembresiaActivaDto;
 import com.espe.gimnasio.dto.HistorialMembresiaDto;
 import com.espe.gimnasio.entity.Historialmambresia;
 import com.espe.gimnasio.entity.Membresia;
@@ -31,6 +32,24 @@ public class HistorialMembresiaService {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	//obtener membresia por usuario (solo la activa)
+	public HistorialMembresiaActivaDto obtenerMembresiaActivaPorUsuario(Integer idUsuario) {
+	    Historialmambresia historial = historialMembresiaRepository.findMembresiaActivaByUsuario(idUsuario)
+	            .orElseThrow(() -> new RuntimeException("El usuario no tiene una membresía activa."));
+
+	    return new HistorialMembresiaActivaDto(
+	            historial.getIdHistorialMembresias(),
+	            historial.getFechaInicio(),
+	            historial.getFechaFin(),
+	            historial.getEstado(),
+	            historial.getValorPagado(),
+	            historial.getMembresia().getNombreMembresia(),
+	            historial.getMembresia().getVigencia()
+	    );
+	}
+
+
 	
 	private Date calcularFechaFin(Date fechaInicio, String vigencia) {
 	    Calendar calendar = Calendar.getInstance();

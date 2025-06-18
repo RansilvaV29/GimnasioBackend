@@ -6,9 +6,9 @@ import java.sql.Date;
 public class HistorialMembresiaDto {
 	private Integer idUsuario;
 	private Integer idMembresia;
-	//private Date fechaInicio;
-	//private Date fechaFin;
-	//private BigDecimal valorMembresiaactual;
+	private Date fechaInicio;
+	private Date fechaFin;
+	private BigDecimal valorMembresiaactual;
 	private BigDecimal valorPagado;
 	private Boolean estado;
 	public Integer getIdUsuario() {
@@ -22,7 +22,7 @@ public class HistorialMembresiaDto {
 	}
 	public void setIdMembresia(Integer idMembresia) {
 		this.idMembresia = idMembresia;
-	}/*
+	}
 	public Date getFechaInicio() {
 		return fechaInicio;
 	}
@@ -40,7 +40,7 @@ public class HistorialMembresiaDto {
 	}
 	public void setValorMembresiaactual(BigDecimal valorMembresiaactual) {
 		this.valorMembresiaactual = valorMembresiaactual;
-	}*/
+	}
 	public BigDecimal getValorPagado() {
 		return valorPagado;
 	}

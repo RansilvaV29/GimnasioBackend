@@ -14,7 +14,7 @@ import com.espe.gimnasio.entity.Historialmambresia;
 @Repository
 public interface HistorialMembresiaRepository extends JpaRepository<Historialmambresia, Integer>{
 	List<Historialmambresia> findByEstadoTrueAndFechaFinBefore(Date fecha);
-	// HistorialMembresiaRepository.java
+	
 	@Query("SELECT h FROM Historialmambresia h WHERE h.usuario.idUsuario = :idUsuario AND h.estado = true")
 	Optional<Historialmambresia> findMembresiaActivaByUsuario(@Param("idUsuario") Integer idUsuario);
 

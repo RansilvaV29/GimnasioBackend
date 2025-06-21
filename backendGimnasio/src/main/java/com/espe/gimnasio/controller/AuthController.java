@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.espe.gimnasio.dto.AuthRespuestaDto;
-import com.espe.gimnasio.dto.LoginRequestDto;
-import com.espe.gimnasio.dto.UpdateUserRequestDto;
+import com.espe.gimnasio.dto.LoginSolicitudDto;
+import com.espe.gimnasio.dto.UpdateUserSolicitudDto;
 import com.espe.gimnasio.dto.UsuarioDto;
 import com.espe.gimnasio.entity.Usuario;
 import com.espe.gimnasio.service.AuthService;
@@ -30,13 +30,18 @@ public class AuthController {
     private JwtService jwtService;
 
     @PostMapping("/register")
-    public ResponseEntity<Usuario> register(@RequestBody Usuario usuario) {
-        Usuario nuevo = authService.registrar(usuario);
-        return ResponseEntity.ok(nuevo);
+    public ResponseEntity<?> register(@RequestBody Usuario usuario) {
+        try {
+            Usuario nuevo = authService.registrar(usuario);
+            return ResponseEntity.ok(nuevo);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
+
     @PostMapping("/login")
-    public ResponseEntity<AuthRespuestaDto> login(@RequestBody LoginRequestDto request) {
+    public ResponseEntity<AuthRespuestaDto> login(@RequestBody LoginSolicitudDto request) {
         Usuario usuario = authService.autenticar(request.getCorreo(), request.getPassword());
         // Aquí se genera el token 
         String token = jwtService.generateToken(usuario.getCorreo(), usuario.getRol().getNombreRol());

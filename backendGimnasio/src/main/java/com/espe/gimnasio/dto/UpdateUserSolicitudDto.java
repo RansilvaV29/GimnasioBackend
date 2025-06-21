@@ -2,7 +2,7 @@ package com.espe.gimnasio.dto;
 
 import java.sql.Date;
 
-public class UpdateUserRequestDto {
+public class UpdateUserSolicitudDto {
 	private Integer idUsuario;
 	private String correo;
     private String nombres;
@@ -13,7 +13,7 @@ public class UpdateUserRequestDto {
     private Integer idRol;
     private Date fechaNacimiento;
     
-	public UpdateUserRequestDto(String correo, String nombres, String apellidos, String telefono, Integer edad,
+	public UpdateUserSolicitudDto(String correo, String nombres, String apellidos, String telefono, Integer edad,
 			String cedula, Integer idRol, Date fechaNacimiento) {
 		this.correo = correo;
 		this.nombres = nombres;

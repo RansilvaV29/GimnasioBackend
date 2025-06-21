@@ -9,18 +9,20 @@ public class HistorialMembresiaActivaDto {
     private Date fechaFin;
     private Boolean estado;
     private BigDecimal valorPagado;
+    private BigDecimal valorMembresiaactual;
     private String nombreMembresia;
     private String vigencia;
 
     // Constructor
     public HistorialMembresiaActivaDto(Integer integer, Date fechaInicio, Date fechaFin,
-                                       Boolean estado, BigDecimal bigDecimal,
+                                       Boolean estado, BigDecimal bigDecimal, BigDecimal valorMembresiaactual,
                                        String nombreMembresia, String vigencia) {
         this.idHistorial = integer;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.estado = estado;
         this.valorPagado = bigDecimal;
+        this.valorMembresiaactual = valorMembresiaactual;
         this.nombreMembresia = nombreMembresia;
         this.vigencia = vigencia;
     }
@@ -79,6 +81,14 @@ public class HistorialMembresiaActivaDto {
 
 	public void setVigencia(String vigencia) {
 		this.vigencia = vigencia;
+	}
+
+	public BigDecimal getValorMembresiaactual() {
+		return valorMembresiaactual;
+	}
+
+	public void setValorMembresiaactual(BigDecimal valorMembresiaactual) {
+		this.valorMembresiaactual = valorMembresiaactual;
 	}
     
     

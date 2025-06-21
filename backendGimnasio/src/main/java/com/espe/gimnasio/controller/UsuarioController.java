@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.espe.gimnasio.dto.UpdateUserRequestDto;
+import com.espe.gimnasio.dto.UpdateUserSolicitudDto;
 import com.espe.gimnasio.dto.UsuarioDto;
 import com.espe.gimnasio.entity.Usuario;
 import com.espe.gimnasio.service.JwtService;
@@ -29,7 +29,7 @@ public class UsuarioController {
     private JwtService jwtService;
 	
 	@PutMapping("/edit/{id}")
-    public ResponseEntity<Usuario> editUser(@PathVariable Integer id, @RequestBody UpdateUserRequestDto request) {
+    public ResponseEntity<Usuario> editUser(@PathVariable Integer id, @RequestBody UpdateUserSolicitudDto request) {
         Usuario actualizado = usuarioService.actualizarUsuario(id, request);
         return ResponseEntity.ok(actualizado);
     }

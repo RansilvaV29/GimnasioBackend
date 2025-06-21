@@ -33,6 +33,9 @@ public class HistorialMembresiaService {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 	
+	@Autowired
+	private NotificacionProducer notificacionProducer;
+	
 	//obtener membresia por usuario (solo la activa)
 	public HistorialMembresiaActivaDto obtenerMembresiaActivaPorUsuario(Integer idUsuario) {
 	    Historialmambresia historial = historialMembresiaRepository.findMembresiaActivaByUsuario(idUsuario)
@@ -44,6 +47,7 @@ public class HistorialMembresiaService {
 	            historial.getFechaFin(),
 	            historial.getEstado(),
 	            historial.getValorPagado(),
+	            historial.getMembresia().getPrecio(),
 	            historial.getMembresia().getNombreMembresia(),
 	            historial.getMembresia().getVigencia()
 	    );
@@ -110,7 +114,7 @@ public class HistorialMembresiaService {
         historial.setValorMembresiaactual(historial.getMembresia().getPrecio());
         historial.setValorPagado(dto.getValorPagado());
         historial.setEstado(dto.getEstado());
-
+        notificacionProducer.enviarNotificacion("Nuevo historial registrado fecha de inicio:" + historial.getFechaInicio() + " fecha de fin: "+historial.getFechaFin() , "Tipo de membresia registrada: "+ historial.getMembresia().getNombreMembresia());
         return historialMembresiaRepository.save(historial);
     }
 	

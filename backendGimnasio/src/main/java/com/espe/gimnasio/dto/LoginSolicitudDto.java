@@ -1,6 +1,6 @@
 package com.espe.gimnasio.dto;
 
-public class LoginRequestDto {
+public class LoginSolicitudDto {
     private String correo;
     private String password;
     

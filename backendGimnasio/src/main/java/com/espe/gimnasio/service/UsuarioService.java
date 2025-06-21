@@ -1,5 +1,8 @@
 package com.espe.gimnasio.service;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.espe.gimnasio.dto.UpdateUserRequestDto;
+import com.espe.gimnasio.dto.UpdateUserSolicitudDto;
 import com.espe.gimnasio.dto.UsuarioDto;
 import com.espe.gimnasio.entity.Rol;
 import com.espe.gimnasio.entity.Usuario;
@@ -61,11 +64,12 @@ public class UsuarioService {
                 .collect(Collectors.toList());
     }
 	
-	public Usuario actualizarUsuario(Integer idUsuario, UpdateUserRequestDto request) {
-        Usuario usuario = usuarioRepository.findById(idUsuario)
+	public Usuario actualizarUsuario(Integer idUsuario, UpdateUserSolicitudDto request) {
+        
+		
+		Usuario usuario = usuarioRepository.findById(idUsuario)
             .orElseThrow(() -> new UsernameNotFoundException("Usuario no encontrado con ID: " + idUsuario));
 
-        // Update fields if provided
         if (request.getCorreo() != null && !request.getCorreo().isEmpty()) {
             usuario.setCorreo(request.getCorreo());
         }
@@ -90,6 +94,7 @@ public class UsuarioService {
             usuario.setRol(rol);
         }
 
+        
         return usuarioRepository.save(usuario);
     }
 }

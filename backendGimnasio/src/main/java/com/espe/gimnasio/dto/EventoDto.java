@@ -4,15 +4,28 @@ package com.espe.gimnasio.dto;
 import java.util.Date;
 
 public class EventoDto {
-
+    private Long idEvento;
     private String nombreEvento;
     private String descripcion;
     private Integer cupoMaximo;
     private Date fecha;
     private String horaInicio;
     private String horraFin;
+    private Integer cuposDisponibles;
+
 
     // Getters y setters
+    
+    public Integer getCuposDisponibles() { return cuposDisponibles; }
+    public void setCuposDisponibles(Integer cuposDisponibles) { this.cuposDisponibles = cuposDisponibles; }
+
+    public Long getIdEvento() {
+        return idEvento;
+    }
+    public void setIdEvento(Long idEvento) {
+        this.idEvento = idEvento;
+    }
+
     public String getNombreEvento() {
         return nombreEvento;
     }

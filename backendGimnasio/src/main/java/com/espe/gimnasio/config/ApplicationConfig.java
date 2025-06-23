@@ -35,7 +35,7 @@ public class ApplicationConfig {
             .csrf(csrf -> csrf.disable()) // Desactiva CSRF para APIs REST
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/**").permitAll() // Permite login y registro
-                .anyRequest().authenticated() // Requiere autenticación para todo lo demás
+                .anyRequest().permitAll() // Requiere autenticación para todo lo demás
             )
             .sessionManagement(session -> session
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)); // Sin sesiones

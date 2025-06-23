@@ -3,10 +3,17 @@ package com.espe.gimnasio.dto;
 import java.math.BigDecimal;
 
 public class MembresiaDto {
+	private Integer id;
 	private String descripcion;
 	private String nombreMembresia;
 	private BigDecimal precio;
 	private String vigencia;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getDescripcion() {
 		return descripcion;
 	}

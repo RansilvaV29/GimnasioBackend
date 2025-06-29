@@ -47,4 +47,6 @@ public class EventoController {
     public CupoEventoDto getCupos(@PathVariable Integer idEvento) {
         return eventoService.obtenerCupoActual(idEvento);
     }
+	
+	
 }

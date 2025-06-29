@@ -2,64 +2,78 @@ package com.espe.gimnasio.entity;
 
 import java.io.Serializable;
 import jakarta.persistence.*;
+import java.util.List;
 
 
 /**
- * The persistent class for the rutina database table.
+ * The persistent class for the rutinas database table.
  * 
  */
 @Entity
+@Table(name="rutinas")
 @NamedQuery(name="Rutina.findAll", query="SELECT r FROM Rutina r")
 public class Rutina implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_rutina")
-	private Integer idRutina;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-	@Column(name="nombre_rutina")
-	private String nombreRutina;
+	private String descripcion;
 
-	private String observaciones;
+	private String nombre;
 
-	//bi-directional many-to-one association to Ejercicio
-	@ManyToOne
-	@JoinColumn(name="id_ejercicio")
-	private Ejercicio ejercicio;
+	//bi-directional many-to-one association to RutinaEjercicio
+	@OneToMany(mappedBy="rutina")
+	private List<RutinaEjercicio> rutinaEjercicios;
 
 	public Rutina() {
 	}
 
-	public Integer getIdRutina() {
-		return this.idRutina;
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setIdRutina(Integer idRutina) {
-		this.idRutina = idRutina;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getNombreRutina() {
-		return this.nombreRutina;
+	public String getDescripcion() {
+		return this.descripcion;
 	}
 
-	public void setNombreRutina(String nombreRutina) {
-		this.nombreRutina = nombreRutina;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public String getObservaciones() {
-		return this.observaciones;
+	public String getNombre() {
+		return this.nombre;
 	}
 
-	public void setObservaciones(String observaciones) {
-		this.observaciones = observaciones;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public Ejercicio getEjercicio() {
-		return this.ejercicio;
+	public List<RutinaEjercicio> getRutinaEjercicios() {
+		return this.rutinaEjercicios;
 	}
 
-	public void setEjercicio(Ejercicio ejercicio) {
-		this.ejercicio = ejercicio;
+	public void setRutinaEjercicios(List<RutinaEjercicio> rutinaEjercicios) {
+		this.rutinaEjercicios = rutinaEjercicios;
+	}
+
+	public RutinaEjercicio addRutinaEjercicio(RutinaEjercicio rutinaEjercicio) {
+		getRutinaEjercicios().add(rutinaEjercicio);
+		rutinaEjercicio.setRutina(this);
+
+		return rutinaEjercicio;
+	}
+
+	public RutinaEjercicio removeRutinaEjercicio(RutinaEjercicio rutinaEjercicio) {
+		getRutinaEjercicios().remove(rutinaEjercicio);
+		rutinaEjercicio.setRutina(null);
+
+		return rutinaEjercicio;
 	}
 
 }

@@ -6,110 +6,110 @@ import java.util.List;
 
 
 /**
- * The persistent class for the ejercicio database table.
+ * The persistent class for the ejercicios database table.
  * 
  */
 @Entity
+@Table(name="ejercicios")
 @NamedQuery(name="Ejercicio.findAll", query="SELECT e FROM Ejercicio e")
 public class Ejercicio implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_ejercicio")
-	private Integer idEjercicio;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-	@Column(name="link_explicacion")
-	private String linkExplicacion;
+	private String descripcion;
 
-	@Column(name="nombre_ejercicio")
-	private String nombreEjercicio;
+	private byte[] gif;
 
-	@Column(name="nro_repeticiones")
-	private Integer nroRepeticiones;
+	private String nombre;
 
-	@Column(name="nro_series")
-	private Integer nroSeries;
-
-	//bi-directional many-to-one association to Musculo
-	@ManyToOne
-	@JoinColumn(name="id_musuculo")
-	private Musculo musculo;
-
-	//bi-directional many-to-one association to Rutina
+	//bi-directional many-to-one association to EjercicioMusculo
 	@OneToMany(mappedBy="ejercicio")
-	private List<Rutina> rutinas;
+	private List<EjercicioMusculo> ejercicioMusculos;
+
+	//bi-directional many-to-one association to RutinaEjercicio
+	@OneToMany(mappedBy="ejercicio")
+	private List<RutinaEjercicio> rutinaEjercicios;
 
 	public Ejercicio() {
 	}
 
-	public Integer getIdEjercicio() {
-		return this.idEjercicio;
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setIdEjercicio(Integer idEjercicio) {
-		this.idEjercicio = idEjercicio;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getLinkExplicacion() {
-		return this.linkExplicacion;
+	public String getDescripcion() {
+		return this.descripcion;
 	}
 
-	public void setLinkExplicacion(String linkExplicacion) {
-		this.linkExplicacion = linkExplicacion;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
-	public String getNombreEjercicio() {
-		return this.nombreEjercicio;
+	public byte[] getGif() {
+		return this.gif;
 	}
 
-	public void setNombreEjercicio(String nombreEjercicio) {
-		this.nombreEjercicio = nombreEjercicio;
+	public void setGif(byte[] gif) {
+		this.gif = gif;
 	}
 
-	public Integer getNroRepeticiones() {
-		return this.nroRepeticiones;
+	public String getNombre() {
+		return this.nombre;
 	}
 
-	public void setNroRepeticiones(Integer nroRepeticiones) {
-		this.nroRepeticiones = nroRepeticiones;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public Integer getNroSeries() {
-		return this.nroSeries;
+	public List<EjercicioMusculo> getEjercicioMusculos() {
+		return this.ejercicioMusculos;
 	}
 
-	public void setNroSeries(Integer nroSeries) {
-		this.nroSeries = nroSeries;
+	public void setEjercicioMusculos(List<EjercicioMusculo> ejercicioMusculos) {
+		this.ejercicioMusculos = ejercicioMusculos;
 	}
 
-	public Musculo getMusculo() {
-		return this.musculo;
+	public EjercicioMusculo addEjercicioMusculo(EjercicioMusculo ejercicioMusculo) {
+		getEjercicioMusculos().add(ejercicioMusculo);
+		ejercicioMusculo.setEjercicio(this);
+
+		return ejercicioMusculo;
 	}
 
-	public void setMusculo(Musculo musculo) {
-		this.musculo = musculo;
+	public EjercicioMusculo removeEjercicioMusculo(EjercicioMusculo ejercicioMusculo) {
+		getEjercicioMusculos().remove(ejercicioMusculo);
+		ejercicioMusculo.setEjercicio(null);
+
+		return ejercicioMusculo;
 	}
 
-	public List<Rutina> getRutinas() {
-		return this.rutinas;
+	public List<RutinaEjercicio> getRutinaEjercicios() {
+		return this.rutinaEjercicios;
 	}
 
-	public void setRutinas(List<Rutina> rutinas) {
-		this.rutinas = rutinas;
+	public void setRutinaEjercicios(List<RutinaEjercicio> rutinaEjercicios) {
+		this.rutinaEjercicios = rutinaEjercicios;
 	}
 
-	public Rutina addRutina(Rutina rutina) {
-		getRutinas().add(rutina);
-		rutina.setEjercicio(this);
+	public RutinaEjercicio addRutinaEjercicio(RutinaEjercicio rutinaEjercicio) {
+		getRutinaEjercicios().add(rutinaEjercicio);
+		rutinaEjercicio.setEjercicio(this);
 
-		return rutina;
+		return rutinaEjercicio;
 	}
 
-	public Rutina removeRutina(Rutina rutina) {
-		getRutinas().remove(rutina);
-		rutina.setEjercicio(null);
+	public RutinaEjercicio removeRutinaEjercicio(RutinaEjercicio rutinaEjercicio) {
+		getRutinaEjercicios().remove(rutinaEjercicio);
+		rutinaEjercicio.setEjercicio(null);
 
-		return rutina;
+		return rutinaEjercicio;
 	}
 
 }

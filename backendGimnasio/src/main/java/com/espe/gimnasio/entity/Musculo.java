@@ -6,64 +6,64 @@ import java.util.List;
 
 
 /**
- * The persistent class for the musculo database table.
+ * The persistent class for the musculos database table.
  * 
  */
 @Entity
+@Table(name="musculos")
 @NamedQuery(name="Musculo.findAll", query="SELECT m FROM Musculo m")
 public class Musculo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id_musuculo")
-	private Integer idMusuculo;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-	@Column(name="nombre_musculo")
-	private String nombreMusculo;
+	private String nombre;
 
-	//bi-directional many-to-one association to Ejercicio
+	//bi-directional many-to-one association to EjercicioMusculo
 	@OneToMany(mappedBy="musculo")
-	private List<Ejercicio> ejercicios;
+	private List<EjercicioMusculo> ejercicioMusculos;
 
 	public Musculo() {
 	}
 
-	public Integer getIdMusuculo() {
-		return this.idMusuculo;
+	public Integer getId() {
+		return this.id;
 	}
 
-	public void setIdMusuculo(Integer idMusuculo) {
-		this.idMusuculo = idMusuculo;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
-	public String getNombreMusculo() {
-		return this.nombreMusculo;
+	public String getNombre() {
+		return this.nombre;
 	}
 
-	public void setNombreMusculo(String nombreMusculo) {
-		this.nombreMusculo = nombreMusculo;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public List<Ejercicio> getEjercicios() {
-		return this.ejercicios;
+	public List<EjercicioMusculo> getEjercicioMusculos() {
+		return this.ejercicioMusculos;
 	}
 
-	public void setEjercicios(List<Ejercicio> ejercicios) {
-		this.ejercicios = ejercicios;
+	public void setEjercicioMusculos(List<EjercicioMusculo> ejercicioMusculos) {
+		this.ejercicioMusculos = ejercicioMusculos;
 	}
 
-	public Ejercicio addEjercicio(Ejercicio ejercicio) {
-		getEjercicios().add(ejercicio);
-		ejercicio.setMusculo(this);
+	public EjercicioMusculo addEjercicioMusculo(EjercicioMusculo ejercicioMusculo) {
+		getEjercicioMusculos().add(ejercicioMusculo);
+		ejercicioMusculo.setMusculo(this);
 
-		return ejercicio;
+		return ejercicioMusculo;
 	}
 
-	public Ejercicio removeEjercicio(Ejercicio ejercicio) {
-		getEjercicios().remove(ejercicio);
-		ejercicio.setMusculo(null);
+	public EjercicioMusculo removeEjercicioMusculo(EjercicioMusculo ejercicioMusculo) {
+		getEjercicioMusculos().remove(ejercicioMusculo);
+		ejercicioMusculo.setMusculo(null);
 
-		return ejercicio;
+		return ejercicioMusculo;
 	}
 
 }

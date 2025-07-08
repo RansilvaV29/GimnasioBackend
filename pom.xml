@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>ec.edu.espe</groupId>
+	<artifactId>sincronizacion</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Microservicios</name>
+	<description>Examen</description>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>backendGimnasioV2</module>
+		<module>notificaciones</module>
+		<!-- <module>ms-notificaciones</module>
+		<module>ms-publicaciones</module>
+		<module>sincronizacion</module>
+		<module>ms-eureka-server</module>
+		<module>ms-api-gateway</module> -->
+	</modules>
+</project>
